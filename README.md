@@ -1,3 +1,3 @@
 # LaiCode
 
-Solutions to the Problems
+Solutions to the Problems.
