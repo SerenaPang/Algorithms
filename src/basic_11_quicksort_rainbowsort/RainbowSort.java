@@ -1,4 +1,4 @@
-package basic11_quicksort_rainbowsort;
+package basic_11_quicksort_rainbowsort;
 
 public class RainbowSort {
 	public void rainowSort(int[] array) {

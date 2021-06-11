@@ -1,4 +1,4 @@
-package basic10_binaryTree;
+package basic_10_binaryTree;
 
 public class preOrder {
 	public void preOrder(TreeNode root) {

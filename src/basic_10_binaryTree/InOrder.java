@@ -1,4 +1,4 @@
-package basic10_binaryTree;
+package basic_10_binaryTree;
 
 public class InOrder {
 	public void inOrder(TreeNode root) {
