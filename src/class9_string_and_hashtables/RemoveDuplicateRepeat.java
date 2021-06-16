@@ -9,7 +9,6 @@ public class RemoveDuplicateRepeat {
      * a b b b b a z w
      */
     public static String removeDup(String s) {
-        System.out.println("remov ");
         //corner case: if string is null or there is no duplicate
         if (s == null || s.length() <= 1) {
             return s;

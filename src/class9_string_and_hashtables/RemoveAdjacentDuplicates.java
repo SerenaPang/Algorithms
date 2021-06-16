@@ -15,20 +15,21 @@ public class RemoveAdjacentDuplicates {
          * but if different, slow pointer ++ and copy that char
         */
         char[] array = s.toCharArray();
-        int slow = 0;
-        //aaaabbbc
-        //s
-        //    f
-        for (int fast = 0; fast < array.length; fast++) {
-
-            if (array[slow] != array[fast - 1]) {
-
-                slow++;
-                array[fast] = array[slow];
+        int end = 0;
+        for (int i = 0; i < array.length; i++) {
+            //we will only keep 1 copy of the char: aaaabbbc  -> abc
+            char currentChar = array[i];
+            System.out.print("index: " + i + " " + currentChar + " ");
+            System.out.println("end: " + end);
+            //note end - 1 is checking the one in the previous is not the same as the cur char
+            if(i == 0 || array[end - 1] != currentChar){
+                //note here the ||or has sequence, so it must be check if
+                //index == 0 first
+                array[end] = array[i];
+                end++;
             }
-
         }
-        return new String(array, 0, slow);
+        return new String(array, 0, end);
     }
     public static void main(String[] args) {
         String s = "aaaabbbc";

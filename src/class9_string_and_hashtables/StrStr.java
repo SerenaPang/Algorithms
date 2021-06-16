@@ -25,23 +25,20 @@ package class9_string_and_hashtables;
  */
 public class StrStr {
     public static int findSubStr(String longStr, String smallStr){
-        char[] longString = longStr.toCharArray();
-        char[] smallString = smallStr.toCharArray();
-        int index = 0;
-        //ab
+        int longLen = longStr.length();
+        int smallLen = smallStr.length();
         //bcabc
-        //  i
-        //  j
-        int shortIndex = 0;
-        for (int i = 0; i < longString.length;i++) {
-            for (int j = i; j < smallString.length; j++) {
-                if(longString[i] == smallString[j]){
-                    i++;
-                    index = i;
-                }
+        //  ab
+        for (int i = 0; i <= longLen - smallLen; i++) {
+            int j = 0;
+            while (j < smallLen && longStr.charAt(i + j) == smallStr.charAt(j)) {
+                j++;
+            }
+            if (smallLen == j) {
+                return i;
             }
         }
-        return index;
+       return 0;
     }
 
     public static void main(String[] args) {
