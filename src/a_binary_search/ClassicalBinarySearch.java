@@ -1,6 +1,6 @@
 package a_binary_search;
 
-//given a sorted array in ascending order, return the index of the target number
+//A classic binary search: given a sorted array in ascending order, return the index of the target number
 public class ClassicalBinarySearch {
 	public static int findTargetNumber(int[] array, int target) {
 		if(array == null || array.length == 0) {
@@ -21,5 +21,4 @@ public class ClassicalBinarySearch {
 		}
 		return -1;
 	}
-
 }
