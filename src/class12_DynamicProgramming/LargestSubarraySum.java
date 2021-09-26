@@ -49,5 +49,14 @@ package class12_DynamicProgramming;
      */
 
 
-public class LargestSubarraySum {
-}
+    public class LargestSubarraySum {
+        public int largestSum(int[] array) {
+            int result = array[0];
+            int cur = array[0];
+            for (int i = 1; i < array.length; i++) {
+                cur = Math.max(cur + array[i], array[i]);//inherit, start from the beginning
+                result = Math.max(result, cur);//update global max
+            }
+            return result;
+        }
+    }
