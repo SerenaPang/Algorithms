@@ -1,4 +1,4 @@
-package combo;
+package graphs_recursion;
 
 public class DoubleDuplicate {
 	public static int[] doubleElement(int array[], int ele) {

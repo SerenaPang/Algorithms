@@ -1,4 +1,4 @@
-package combo;
+package graphs_recursion;
 
 /**
  * 10:12 - 10:22

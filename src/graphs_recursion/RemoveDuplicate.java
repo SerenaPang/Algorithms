@@ -1,4 +1,4 @@
-package combo;
+package graphs_recursion;
 
 public class RemoveDuplicate {
 	public static int[] removeDup(int[] array, int duplicate) {

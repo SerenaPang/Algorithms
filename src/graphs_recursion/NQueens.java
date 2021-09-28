@@ -1,4 +1,4 @@
-package combo;
+package graphs_recursion;
 
 import java.util.ArrayList;
 import java.util.List;
