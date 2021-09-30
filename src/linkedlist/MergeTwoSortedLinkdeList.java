@@ -1,7 +1,5 @@
 package linkedlist;
 
-import basic7_linkedlist.ListNode;
-
 public class MergeTwoSortedLinkdeList {
 	//Merge with dummy head
 	public ListNode merge1(ListNode head1, ListNode head2) {
@@ -11,7 +9,7 @@ public class MergeTwoSortedLinkdeList {
 		ListNode cur2 = head2;
 		
 		while(cur1 != null && cur2 != null) {
-			if(cur1.value <= cur2.value) {
+			if(cur1.val <= cur2.val) {
 				cur.next = cur1;
 				cur = cur.next;
 				cur1 = cur1.next;
@@ -42,7 +40,7 @@ public class MergeTwoSortedLinkdeList {
 		if(head2 == null) {
 			return head1;
 		}
-		if(head1.value < head2.value) {
+		if(head1.val < head2.val) {
 			head = head1;
 			head1 = head1.next;
 		}else {
@@ -54,7 +52,7 @@ public class MergeTwoSortedLinkdeList {
 		ListNode cur1 = head1;
 		ListNode cur2 = head2;
 		while(cur1 != null && cur2 != null) {
-			if(cur1.value <= cur2.value) {
+			if(cur1.val <= cur2.val) {
 				cur.next = cur1;
 				cur = cur.next;
 				cur1 = cur1.next;
