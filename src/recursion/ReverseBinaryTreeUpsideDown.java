@@ -1,7 +1,6 @@
 package recursion;
 
 public class ReverseBinaryTreeUpsideDown {
-
     /**
      * 除了subproblem，在当前层如何反转？
      * root的左孩子的左孩子指向root
@@ -11,7 +10,6 @@ public class ReverseBinaryTreeUpsideDown {
             if (root == null || root.left == null) {
                 return root;
             }
-
             TreeNode newRoot = reverse(root.left);
             root.left.right = root.right;
             root.left.left = root;
