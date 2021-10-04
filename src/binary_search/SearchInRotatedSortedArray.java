@@ -53,32 +53,43 @@ public class SearchInRotatedSortedArray {
         }
         int left = 0;
         int right = nums.length - 1;
-        while (left <= right) {
+        if (nums[left] > target) {
+            //extend left until it's smaller than the target
+
+        }
+        while (left < right - 1) {
             int mid = left + (right - left) / 2;
-            if (nums[mid] == target) {
-                return mid;
-            } else if (nums[mid] > target) {
-                if (nums[mid + 1] < target && nums[left] > target) {// found boundary
-                    left = mid + 1;
-                } else if (nums[mid + 1] == target) {
-                    return mid + 1;
-                } else {
-                    right = mid - 1;
-                }
-            } else if (nums[mid] < target) {
-                left = mid + 1;
+            if (nums[mid] <= target) {
+                left = mid;
+            } else {
+                right = mid;
             }
+        }
+        System.out.println("now left is " + nums[left] +
+                " right is " + nums[right]);
+        if (nums[left] == target) {
+            return left;
+        } else if (nums[right] == target){
+            return right;
         }
         return -1;
     }
 
+    public static void print(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
-       // int[] arr = new int[]{4, 5, 6, 7, 0, 1, 2, 3};
-        //int target = 3;
+        int[] arr = new int[]{4, 5, 6, 7, 0, 1, 2, 3};
+        int target = 3;
         //int[] arr = new int[]{1};
         //int target = 0;
-        int[] arr = new int[]{1,3,5};
-        int target = 4;
+       // int[] arr = new int[]{1,3,5};
+        //int target = 4;
+        print(arr);
         int result = search(arr, target);
         System.out.println("target " + target + " is at index " + result);
     }
