@@ -12,21 +12,8 @@ package dynamic.programming.dp;
  * {1, 3, 2, 0, 3}, we are able to reach the end of array(jump to index 1 then reach the end of the array)
  * <p>
  * {2, 1, 1, 0, 2}, we are not able to reach the end of array
- * <p>
- * <p>
- * index  0  1  2  3  4
- * i
- * {1, 3, 2, 0, 3}
- * j
- * <p>
- * memo    f  f  f  f
- * len: 4
- * i: 3
- * arr[i]:0
- * i + arr[i]: 3
- * <p>
- * <p>
- * j:
+
+ *
  */
 public class ArrayHooper {
     public static boolean canJump(int[] arr) {
@@ -39,7 +26,7 @@ public class ArrayHooper {
         for (int i = arr.length - 2; i >= 0; i--) {
             System.out.println("Element: " + arr[i] + " Index: " + i);
             if (i + arr[i] >= arr.length - 1) {
-                System.out.println("element: " + arr[i]);
+             //   System.out.println("element: " + arr[i]);
                 memo[i] = true;
             } else {
                 for (int j = arr[i]; j >= 1; j--) {
@@ -70,8 +57,8 @@ public class ArrayHooper {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1, 3, 2, 0, 3};
-        print(arr);
+        int[] arr = new int[]{1,2,1, 3, 2, 0, 3};
+       // print(arr);
         canJump(arr);
     }
 }
