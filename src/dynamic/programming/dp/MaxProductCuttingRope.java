@@ -27,19 +27,24 @@ package dynamic.programming.dp;
  */
 public class MaxProductCuttingRope {
     public static int maxProduct(int length) {
-        int globalMax = 0;
-        int[] memo = new int[length + 1];
-
-        memo[1] = 0;
-        for (int i = 2; i <= length; i++) {
-            for (int j = i; j < i; j++) {
-
-            }
-        }
-
-
-        return globalMax;
+      int[] memo = new int[length + 1];
+      memo[1] = 0;
+      for (int i = 2; i <= length; i++) {
+          for (int j = 1; j < i; j++) {
+             System.out.println("i: " + i + " j: " + j + " i - j: " + (i - j)  + " memo[i]: " + memo[i] +  " memo[j]: " + memo[j]);
+              System.out.println("Math.max( " + "memo[i]: " + memo[i] +
+                      " , Math.max( j: " + j + " , memo[j]: " +
+                      memo[j] + ")");
+             memo[i] = Math.max(memo[i], Math.max(j, memo[j]) *(i - j));
+          }
+          System.out.println();
+      }
+      return memo[length];
     }
 
+    public static void main(String[] args) {
+        int length = 5;
+        maxProduct(5);
 
+    }
 }
