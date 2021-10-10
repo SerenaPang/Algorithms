@@ -58,9 +58,8 @@ public class CheckIfBinaryTreeIsBalanced {
         int right = getHeight(root.right);
         if (Math.abs(left - right) > 1) {
             return false;
-        } else{
-            return true;
         }
+        return isBalanced(root.left) && isBalanced(root.right);
     }
 
     public int getHeight(TreeNode root) {
@@ -71,9 +70,4 @@ public class CheckIfBinaryTreeIsBalanced {
         int right = getHeight(root.right);
         return Math.max(left, right) + 1;
     }
-
-    public int print() {
-        return 24;
-    }
-
 }
