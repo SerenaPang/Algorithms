@@ -14,7 +14,7 @@ public class BucketSortPerson {
         for (Person aPerson : people) {
             indexAsAgeArray[aPerson.getAge()].add(aPerson);
         }
-       // print(indexAsAgeArray);
+         // print(indexAsAgeArray);
         //put the sorted elements to a list
         List<Person> listOfSortedPersons = new ArrayList<>();
         for (int i = 0; i < indexAsAgeArray.length; i++) {
