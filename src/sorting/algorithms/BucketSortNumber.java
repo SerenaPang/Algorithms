@@ -1,8 +1,6 @@
 package sorting.algorithms;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public class BucketSortNumber {
     //number range: [0 -2000]
@@ -16,7 +14,7 @@ public class BucketSortNumber {
         for (int i = 0; i < array.length; i++) {
             allNumsBuckets[array[i]].add(array[i]);
         }
-
+/**
         //put the sorted elements to a list
         List<Integer> listOfSortedNumbers = new ArrayList<>();
         for (int i = 0; i < allNumsBuckets.length; i++) {
@@ -31,6 +29,18 @@ public class BucketSortNumber {
         //put the elements sorted to the original array
         for (int i = 0; i < array.length; i++) {
             array[i] = listOfSortedNumbers.get(i);
+        }
+ */
+        int index = 0;
+        for (int i = 0; i < allNumsBuckets.length; i++) {
+            if (allNumsBuckets[i].size() == 0) {
+                continue;
+            } else {
+                for (int j = 0; j < allNumsBuckets[i].size(); j++) {
+                    array[index] = allNumsBuckets[i].get(j);
+                    index++;
+                }
+            }
         }
        print(array);
     }
