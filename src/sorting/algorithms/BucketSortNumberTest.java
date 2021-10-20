@@ -11,7 +11,8 @@ class BucketSortNumberTest {
         int[] array = new int[]{5,3,8,7,9,6,1};
 
         BucketSortNumber bucketSort = new BucketSortNumber();
-        bucketSort.sort(array);
+        //bucketSort.sortWithList(array);
+        bucketSort.sortWithCounter(array);
 
         int[] expected = new int[]{1,3,5,6,7,8,9};
         assertArrayEquals(expected, array);
@@ -22,7 +23,8 @@ class BucketSortNumberTest {
         int[] array = new int[]{5,5,3,8,7,9,6,1,1};
 
         BucketSortNumber bucketSort = new BucketSortNumber();
-        bucketSort.sort(array);
+        //bucketSort.sortWithList(array);
+        bucketSort.sortWithCounter(array);
 
         int[] expected = new int[]{1,1,3,5,5,6,7,8,9};
         assertArrayEquals(expected, array);

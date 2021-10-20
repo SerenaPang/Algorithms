@@ -28,4 +28,17 @@ public class Person {
     public String toString() {
         return this.name + " " + this.age;
     }
+
+    public int hasCode() {
+        return this.age;
+    }
+
+    public boolean equals(Object obj) {
+        Person aPerson = (Person)obj;
+        if (this.age == aPerson.age && this.name == aPerson.name) {
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class BucketSortNumber {
     //number range: [0 -2000]
-    public void sort(int[] array) {
+    public void sortWithList(int[] array) {
       //  LinkedList<Integer>[] allNumsBuckets = new LinkedList[2001];
         LinkedList<Integer>[] allNumsBuckets = new LinkedList[20];
         for (int i = 0; i < allNumsBuckets.length; i++) {
@@ -45,6 +45,30 @@ public class BucketSortNumber {
        print(array);
     }
 
+    public void sortWithCounter(int[] array) {
+        //  LinkedList<Integer>[] allNumsBuckets = new LinkedList[2001];
+       int[] allNumsBuckets = new int[20];
+
+       //record the number of occurance of the number
+        for (int i = 0; i < array.length; i++) {
+                allNumsBuckets[array[i]] = allNumsBuckets[array[i]] + 1;
+        }
+     //   print(allNumsBuckets);
+
+        int index = 0;
+        for (int i = 0; i < allNumsBuckets.length; i++) {
+            if (allNumsBuckets[i] == 0) {
+                continue;
+            } else {
+                for (int j = 0; j < allNumsBuckets[i]; j++) {
+                    array[index] = i;
+                    index++;
+                }
+            }
+        }
+        print(array);
+    }
+
     public void print(LinkedList<Integer>[] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.println(array[i]);
@@ -61,6 +85,7 @@ public class BucketSortNumber {
         BucketSortNumber bs = new BucketSortNumber();
        // int[] array = new int[]{5,3,8,7,9,6,1};
         int[] array = new int[]{5,5,3,8,7,9,6,1,1};
-        bs.sort(array);
+       // bs.sortWithList(array);
+        bs.sortWithCounter(array);
     }
 }
