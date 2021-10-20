@@ -1,34 +1,46 @@
 package sorting.algorithms;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public class BucketSortPerson {
     public void sortByAge(Person[] people) {
-        LinkedList<Person>[] indexAsAgeArray = new LinkedList[131];
-        for (int i = 0; i < indexAsAgeArray.length; i++) {
-            indexAsAgeArray[i] = new LinkedList<>();
+        LinkedList<Person>[] ageBucketsArray = new LinkedList[131];
+        for (int i = 0; i < ageBucketsArray.length; i++) {
+            ageBucketsArray[i] = new LinkedList<>();
         }
 
         for (Person aPerson : people) {
-            indexAsAgeArray[aPerson.getAge()].add(aPerson);
+            ageBucketsArray[aPerson.getAge()].add(aPerson);
         }
-         // print(indexAsAgeArray);
+         // print(ageBucketsArray);
+        /**
         //put the sorted elements to a list
         List<Person> listOfSortedPersons = new ArrayList<>();
-        for (int i = 0; i < indexAsAgeArray.length; i++) {
-            if (indexAsAgeArray[i].size() == 0) {
+        for (int i = 0; i < ageBucketsArray.length; i++) {
+            if (ageBucketsArray[i].size() == 0) {
                 continue;
             } else{
-                for (int j = 0; j < indexAsAgeArray[i].size(); j++) {
-                    listOfSortedPersons.add(indexAsAgeArray[i].get(j));
+                for (int j = 0; j < ageBucketsArray[i].size(); j++) {
+                    listOfSortedPersons.add(ageBucketsArray[i].get(j));
                 }
             }
         }
         //put the elements sorted to the original array
         for (int i = 0; i < people.length; i++) {
             people[i] = listOfSortedPersons.get(i);
+        }
+         */
+
+        int index = 0;
+        for (int i = 0; i < ageBucketsArray.length; i++) {
+            if (ageBucketsArray[i].size() == 0) {
+                continue;
+            } else {
+                for (int j = 0; j < ageBucketsArray[i].size(); j++) {
+                    people[index] = ageBucketsArray[i].get(j);
+                    index++;
+                }
+            }
         }
         print(people);
     }
