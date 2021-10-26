@@ -34,4 +34,8 @@ public class Movie {
     public void setID(int ID) {
         this.ID = ID;
     }
+
+    public String toString() {
+        return this.ID + " " + this.NAME + " " + this.YEAR;
+    }
 }
