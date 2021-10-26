@@ -1,0 +1,44 @@
+Given an input csv text file, output the result of the info contains in the file
+
+what does the file contains:
+movie id, name, year
+
+movies are seperated by commas
+
+what is the size of the file:
+1 million movies max
+
+what are we going to output?(the id of the movie, the name?)
+search by id, name, and year
+
+how to out put the result?(in some kind of data structure? in a file? print it?)
+store the result in a list, and print it
+
+Does the results need to be sorted in some order? Multiple result? what to do when result not found in the file?
+random order, when there are multiple results print all results, when result not found, print not found
+
+
+Driver:
+1. Welcome the guest and tell the user which functions we have(coordinate with User Interface)
+2. When user made a selection, recieve the input, search  return the result they want(coordinate with Search Services)
+
+User Interface:
+Print Welcome Messages
+Options the User has (coordinate with Search Services)
+
+Search Services:
+Search By name, by id, by year produced
+return the result in a list
+
+File Reader:
+read the input file and store the file input to a map
+
+
+
+
+
+
+
+
+
+
