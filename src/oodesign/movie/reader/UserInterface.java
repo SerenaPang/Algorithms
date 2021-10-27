@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Print Welcome Messages
- * Options the User has (coordinate with Search Services)
+ * 1. Welcome the guest and tell the user which functions we have(coordinate with User Interface)
+ * 2. When user made a selection, receive the input, search, return the result they want(coordinate with Search Services
  */
 public class UserInterface {
     HashMap<Integer, Movie> mapOfMovies = new HashMap<Integer, Movie>();
@@ -44,7 +44,21 @@ public class UserInterface {
         welcome();
         menu();
         coordinator();
-        // goodbye();
+        another();
+    }
+
+    /**
+     * start another search
+     */
+    public void another() {
+        System.out.println("Do you want to start another search? enter [yes] or [no] :");
+        Scanner in = new Scanner(System.in);
+        String userChoice = in.nextLine();
+        if (userChoice.equals("yes")) {
+            startProgram();
+        } else {
+            goodbye();
+        }
     }
 
     /**

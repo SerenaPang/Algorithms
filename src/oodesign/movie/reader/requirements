@@ -19,10 +19,12 @@ random order, when there are multiple results print all results, when result not
 
 
 Driver:
-1. Welcome the guest and tell the user which functions we have(coordinate with User Interface)
-2. When user made a selection, recieve the input, search  return the result they want(coordinate with Search Services)
+provides the file
+start the program
 
 User Interface:
+1. Welcome the guest and tell the user which functions we have(coordinate with User Interface)
+2. When user made a selection, recieve the input, search  return the result they want(coordinate with Search Services
 Print Welcome Messages
 Options the User has (coordinate with Search Services)
 

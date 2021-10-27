@@ -6,7 +6,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import java.util.*;
-
+/**
+ * read the input file and store the file input to a list
+ */
 public class MyFileReader {
     public static HashMap<Integer, Movie> mapOfMovies = new HashMap<Integer, Movie>();
 
