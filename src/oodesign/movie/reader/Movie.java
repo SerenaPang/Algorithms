@@ -1,41 +1,41 @@
 package oodesign.movie.reader;
 
 public class Movie {
-    int ID;
-    String NAME;
-    String YEAR;
+    int id;
+    String name;
+    String year;
 
     Movie(int id, String name, String year) {
-        this.ID = id;
-        this.NAME = name;
-        this.YEAR = year;
+        this.id = id;
+        this.name = name;
+        this.year = year;
     }
 
-    public String getNAME() {
-        return NAME;
+    public String getName() {
+        return name;
     }
 
-    public void setNAME(String name) {
-        this.NAME = name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getYEAR() {
-        return YEAR;
+    public String getYear() {
+        return year;
     }
 
-    public void setYEAR(String year) {
-        this.YEAR = year;
+    public void setYear(String year) {
+        this.year = year;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String toString() {
-        return this.ID + " " + this.NAME + " " + this.YEAR;
+        return this.id + " " + this.name + " " + this.year;
     }
 }

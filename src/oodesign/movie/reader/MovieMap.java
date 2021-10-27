@@ -15,7 +15,7 @@ public class MovieMap {
      * */
     public HashMap<Integer, Movie> buildIdAndMovieMap(List<Movie> movies) {
         for (Movie aMovie : movies) {
-            mapOfMovies.put(aMovie.ID, aMovie);
+            mapOfMovies.put(aMovie.id, aMovie);
             // System.out.println(aMovie.ID + " " + aMovie.NAME + " " + aMovie.YEAR);
         }
         return mapOfMovies;
@@ -24,14 +24,14 @@ public class MovieMap {
     public static void printMap(HashMap<Integer, Movie> mapOfMovies) {
         System.out.println("Printing map: ");
         for (Integer aMovie : mapOfMovies.keySet()) {
-            System.out.println("ID: " + mapOfMovies.get(aMovie).ID
-                    + " Name: " + mapOfMovies.get(aMovie).NAME + " Year: " + mapOfMovies.get(aMovie).YEAR);
+            System.out.println("ID: " + mapOfMovies.get(aMovie).id
+                    + " Name: " + mapOfMovies.get(aMovie).name + " Year: " + mapOfMovies.get(aMovie).year);
         }
     }
 
     public static void print(List<Movie> movies) {
         for (Movie aMovie : movies) {
-            System.out.println(aMovie.ID + " " + aMovie.NAME + " " + aMovie.YEAR);
+            System.out.println(aMovie.id + " " + aMovie.name + " " + aMovie.year);
         }
     }
 

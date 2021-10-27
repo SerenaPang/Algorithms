@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static oodesign.movie.reader.MovieMap.printMap;
-
 /**
  * Search By name, by id, by year produced
  * return the result in a list
@@ -21,8 +19,8 @@ public class SearchServices {
     public static void printMap(HashMap<Integer, Movie> mapOfMovies) {
         System.out.println("Printing map: ");
         for (Integer aMovie : mapOfMovies.keySet()) {
-            System.out.println("ID: " + mapOfMovies.get(aMovie).ID
-                    + " Name: " + mapOfMovies.get(aMovie).NAME + " Year: " + mapOfMovies.get(aMovie).YEAR);
+            System.out.println("ID: " + mapOfMovies.get(aMovie).id
+                    + " Name: " + mapOfMovies.get(aMovie).name + " Year: " + mapOfMovies.get(aMovie).year);
         }
     }
 
@@ -43,8 +41,8 @@ public class SearchServices {
     public List<Integer> searchByName(String name) {
         List<Integer> result = new ArrayList<>();
         for (Integer aMovie : mapOfMovies.keySet()) {
-            if (mapOfMovies.get(aMovie).NAME.equals(name)) {
-                result.add(mapOfMovies.get(aMovie).ID);
+            if (mapOfMovies.get(aMovie).name.equals(name)) {
+                result.add(mapOfMovies.get(aMovie).id);
             }
         }
         return result;
@@ -56,8 +54,8 @@ public class SearchServices {
     public List<Integer> searchByYear(String year) {
         List<Integer> result = new ArrayList<>();
         for (Integer aMovie : mapOfMovies.keySet()) {
-            if (mapOfMovies.get(aMovie).YEAR.equals(year)) {
-                result.add(mapOfMovies.get(aMovie).ID);
+            if (mapOfMovies.get(aMovie).year.equals(year)) {
+                result.add(mapOfMovies.get(aMovie).id);
             }
         }
         return result;
@@ -71,7 +69,7 @@ public class SearchServices {
             System.out.println("Movie is currently NOT in the file");
         }
         for (Integer id : result) {
-            System.out.println("ID: " + id + " Name: " + mapOfMovies.get(id).NAME + " Year: " + mapOfMovies.get(id).YEAR);
+            System.out.println("ID: " + id + " Name: " + mapOfMovies.get(id).name + " Year: " + mapOfMovies.get(id).year);
         }
     }
 

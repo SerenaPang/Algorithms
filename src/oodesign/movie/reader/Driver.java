@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * provides the file
- * start the program
+ * This Driver class provides the file to be processed and
+ * starts the program
  */
 public class Driver {
     public static void main(String[] args) throws IOException {

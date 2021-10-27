@@ -84,7 +84,7 @@ public class MyFileReader {
 
     public static void print(List<Movie> movies) {
         for (Movie aMovie : movies) {
-            System.out.println(aMovie.ID + " " + aMovie.NAME + " " + aMovie.YEAR);
+            System.out.println(aMovie.id + " " + aMovie.name + " " + aMovie.year);
         }
     }
 
