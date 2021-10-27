@@ -19,7 +19,9 @@ public class MyFileReader {
             System.out.println(line);
         }
     }
-
+/**
+ * split the line into arraylist and use string converter
+ */
     public List<Movie> extractMovies(File inputFile) throws IOException {
         List<Movie> listOfMovies = new ArrayList<>();
         FileReader in = new FileReader(inputFile);
@@ -28,22 +30,45 @@ public class MyFileReader {
         System.out.println("Reading " + inputFile.getName().toString() + "... ...");
         String line;
         while ((line = br.readLine()) != null) {
-            //System.out.println(line);
             //for each line, we extract the id, name and year
             ArrayList<String> movie = new ArrayList<>(Arrays.asList(line.split(",")));
             String idStr = movie.get(0);
-            //  int id = Integer.parseInt(idStr);
             int id = converter.convert(idStr);
             String name = movie.get(1);
             String year = movie.get(2);
-            // System.out.println("id: " + id + " name: " + name + " year: " + year);
             Movie aMovie = new Movie(id, name, year);
             listOfMovies.add(aMovie);
         }
         return listOfMovies;
     }
 
-    public List<Movie> extractMovies2() throws IOException {
+
+    /**
+     * split the line into array and use integer parse int
+     */
+    public List<Movie> extractMovies2(File inputFile) throws IOException {
+        List<Movie> listOfMovies = new ArrayList<>();
+        FileReader in = new FileReader(inputFile);
+        BufferedReader br = new BufferedReader(in);
+
+        System.out.println("Reading " + inputFile.getName().toString() + "... ...");
+        String line;
+        while ((line = br.readLine()) != null) {
+            List<Movie> listMovies = new ArrayList<>();
+            //for each line, we extract the id, name and year
+            String[] movieArray = line.split(",");
+            String idStr = movieArray[0];
+            int id = Integer.parseInt(idStr);
+            String name = movieArray[1];
+            String year = movieArray[2];
+
+            Movie aMovie = new Movie(id, name, year);
+            listOfMovies.add(aMovie);
+        }
+        return listOfMovies;
+    }
+
+    public List<Movie> extractMovies3() throws IOException {
         List<Movie> listOfMovies = new ArrayList<>();
         Movie aMovie = new Movie(1, "a", "10");
         listOfMovies.add(aMovie);
