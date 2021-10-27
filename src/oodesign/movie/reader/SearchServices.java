@@ -67,6 +67,9 @@ public class SearchServices {
      * prints the result movies including the id, name, and year
      */
     public void printSearchResults(List<Integer> result) {
+        if (result.size() == 0) {
+            System.out.println("Movie is currently NOT in the file");
+        }
         for (Integer id : result) {
             System.out.println("ID: " + id + " Name: " + mapOfMovies.get(id).NAME + " Year: " + mapOfMovies.get(id).YEAR);
         }
