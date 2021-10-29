@@ -31,6 +31,11 @@ start the merge
 File Reader:
 read the input file and store the file input to a map
 
+Merge Sorted Map:
+merge k sorted map into one big map in ascending order
+
+MyFileWriter:
+writes the result of the merging files to the out put files
 
 
 

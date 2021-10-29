@@ -82,10 +82,10 @@ public class MyFileReader {
         HashMap<Integer, List<String>>  filexMapOfMessages = fr.extractMessageAndTime(filex);
         print(filexMapOfMessages);
 
-        HashMap<Integer, List<String>>  fileyMapOfMessages = fr.extractMessageAndTime(filex);
+        HashMap<Integer, List<String>>  fileyMapOfMessages = fr.extractMessageAndTime(filey);
         print(fileyMapOfMessages);
 
-        HashMap<Integer, List<String>>  filezMapOfMessages = fr.extractMessageAndTime(filex);
+        HashMap<Integer, List<String>>  filezMapOfMessages = fr.extractMessageAndTime(filez);
         print(filexMapOfMessages);
     }
 }
