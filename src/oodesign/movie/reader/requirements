@@ -17,6 +17,7 @@ store the result in a list, and print it
 Does the results need to be sorted in some order? Multiple result? what to do when result not found in the file?
 random order, when there are multiple results print all results, when result not found, print not found
 
+Class Diagram:
 
 Driver:
 provides the file

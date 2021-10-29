@@ -1,0 +1,42 @@
+Given a number of files with time stamps and messagaes,
+sort these messages according to the time stamps, and output them to 1 file with all the
+sorted messages
+
+
+what is going to contains in these files?
+
+time stamp:messages
+
+are going to be seperated by :
+
+contents in the file:
+already sorted in time stamp
+
+file format?
+txt
+
+size of the file?
+1 - 100 GB
+
+
+output:
+result should be sorted by the time stamps with all the messages from all files
+
+Class Diagram:
+
+Driver:
+provides the file
+start the merge
+
+File Reader:
+read the input file and store the file input to a map
+
+
+
+
+
+
+
+
+
+
