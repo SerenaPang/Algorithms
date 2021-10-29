@@ -2,6 +2,9 @@ package oodesign.mergek;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,8 +15,9 @@ import java.util.List;
 public class MyFileWriter {
 
     //writing the merging result to the out put file
-    public void myFileWriter (HashMap<Integer, List<String>> result) {
-
+    public void myFileWriter (Path path, HashMap<Integer, List<String>> result) throws IOException{
+        String content = "hello there";
+        Files.write(path, content.getBytes(StandardCharsets.UTF_8));
     }
 
     public static void print(HashMap<Integer, List<String>> messageMap) {
@@ -55,7 +59,8 @@ public class MyFileWriter {
 
         //write files to the output location
         File output = new File("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/output");
-
+        MyFileWriter writer = new MyFileWriter();
+        writer.myFileWriter(output.toPath(), result);
     }
 
 
