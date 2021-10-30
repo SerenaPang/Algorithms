@@ -8,6 +8,11 @@ import java.util.List;
 
 /**
  * merge all maps into one large map
+ *
+ * This solution is not so good because if the memory is only 16 GB, then when we are loading a file which is 100 GB,
+ * then it could not fit in the memory
+ *
+ * if 1 file has the size of r, another has the size of t then the time complexity is going to be t + r
  */
 public class MergeKSortedMaps {
 
