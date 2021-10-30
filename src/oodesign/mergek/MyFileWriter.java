@@ -15,11 +15,17 @@ import java.util.List;
 public class MyFileWriter {
 
     //writing the merging result to the out put file
-    public void myFileWriter (Path path, HashMap<Integer, List<String>> result) throws IOException{
+    public void writeLine(Path path, HashMap<Integer, List<String>> result) throws IOException{
         String content = "hello there";
+
         Files.write(path, content.getBytes(StandardCharsets.UTF_8));
     }
 
+    public void writeLine(Path path, String content) throws IOException{
+        content = "hello there";
+
+        Files.write(path, content.getBytes(StandardCharsets.UTF_8));
+    }
     public static void print(HashMap<Integer, List<String>> messageMap) {
         System.out.println("Printing map: ");
         for (Integer key : messageMap.keySet()) {
@@ -60,7 +66,7 @@ public class MyFileWriter {
         //write files to the output location
         File output = new File("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/output");
         MyFileWriter writer = new MyFileWriter();
-        writer.myFileWriter(output.toPath(), result);
+        writer.writeLine(output.toPath(), result);
     }
 
 

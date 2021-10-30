@@ -37,7 +37,30 @@ merge k sorted map into one big map in ascending order
 MyFileWriter:
 writes the result of the merging files to the out put files
 
+solution:
+file x
+file y
+file z
 
+file output_xy
+file output_xyz
+
+first we read file x and y, use 2 pointers to compare the time
+and output the smaller one to the output_xy file and then the bigger one
+
+once we finish file x and file y, we have the output_xy sorted with the content of the file x and file y
+
+then we start the same process with file z, to have two pointers points to 1 item in file z and output_xy
+to get a file output_xyz
+
+
+detailed implementation:
+create 2 pointers to keep tract of the index of the line of the file, so we can compare each lines
+read the files and for each line that the pinter points to, we compare the time
+and out put the time and messages to a list of maps(we have a map of <timestamp, messages>
+this map is static for all files, since it keeps all the contents in ordered
+
+once we have the maps for all files sorted with time stamps, we start output the map to the files
 
 
 
