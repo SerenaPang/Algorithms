@@ -13,7 +13,6 @@ import java.util.List;
 
 public class MyFileWriter {
 
-
     public void writeLine(Path path, String content) throws IOException {
         FileWriter writer = new FileWriter(path.toFile());
         System.out.println("writing " + content);
