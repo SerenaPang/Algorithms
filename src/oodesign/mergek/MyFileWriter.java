@@ -3,8 +3,6 @@ package oodesign.mergek;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
@@ -15,14 +13,12 @@ import java.util.List;
 
 public class MyFileWriter {
 
-    //writing the merging result to the out put file
-    public void writeLine(Path path, HashMap<Integer, List<String>> result) throws IOException {
-        String content = "hello there";
-        Files.write(path, content.getBytes(StandardCharsets.UTF_8));
-    }
 
     public void writeLine(Path path, String content) throws IOException {
-        Files.write(path, content.getBytes(StandardCharsets.UTF_8));
+        FileWriter writer = new FileWriter(path.toFile());
+        System.out.println("writing " + content);
+        writer.write(content + System.lineSeparator());
+        writer.close();
     }
 
     public void writeToFile(Path path ,List<String> result) throws IOException {
