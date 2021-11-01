@@ -67,6 +67,19 @@ https://pediaa.com/what-is-the-difference-between-filereader-and-bufferedreader-
 
 
 
+        //read file x and file y, output to file xy
+        File filexy= new File("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/outputxy");
+        reader.mergeFilesToAFile(filey,filex, filexy);
+
+        //read output file xy and file z, output it to file xyz
+        File filexyz= new File("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/outputxyz");
+        reader.mergeFilesToAFile(filexy,filez, filexyz);
+
+        //merge all the files to output
+        File fileoutput= new File("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/output");
+        reader.mergeFilesToAFile(filex,filey,fileoutput);
+        reader.mergeFilesToAFile(fileoutput, filez,fileoutput);
+
 
 
 
