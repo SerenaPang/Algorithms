@@ -54,7 +54,7 @@ public class MyFileWriter {
         File filey = new File("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/filey");
         File filez = new File("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/filez");
         //merge result
-        List<String> result = reader.merge(filex, filey);
+        List<String> result = reader.mergeToList(filex, filey);
 
         //write list of strings to the output location
       //  File output = new File("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/output");

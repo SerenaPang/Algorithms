@@ -17,7 +17,7 @@ public class MyFileReaderSolutionTwo {
      * However, if we put everythong into the list, then the memory is going to explode if the data doesn't fit, it's the same problem
      * of reading all data from the files, so it's better to read the data from 2 files, compare 2 lines, and put the result to the outputfile immediately
      **/
-    public List<String> merge(File firstInputFile, File secondInputFile) throws IOException {
+    public List<String> mergeToList(File firstInputFile, File secondInputFile) throws IOException {
         MyFileWriter writer = new MyFileWriter();
 
         FileReader firstFR = new FileReader(firstInputFile);
@@ -73,7 +73,11 @@ public class MyFileReaderSolutionTwo {
        return listOfSortedResult;
     }
 
-    public void mergeFiles(File firstInputFile, File secondInputFile, File outputFile) throws IOException {
+    /**
+     * This function takes two file inputs and read  each line, compare it, and directly output the result
+     * to the output file
+     * */
+    public void mergeFilesToAFile(File firstInputFile, File secondInputFile, File outputFile) throws IOException {
       //create file reader to read the files
         FileReader firstFR = new FileReader(firstInputFile);
         BufferedReader br = new BufferedReader(firstFR);
@@ -132,9 +136,6 @@ public class MyFileReaderSolutionTwo {
         writer.close();
     }
 
-
-
-
     public void print(List<String> result) {
         for (String line : result) {
             System.out.println(line);
@@ -151,8 +152,11 @@ public class MyFileReaderSolutionTwo {
         //write string content directly to the output location
         Path output = Path.of("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/output");
         File outputFile = output.toFile();
-        reader.mergeFiles(filex,filey,outputFile);
+        reader.mergeFilesToAFile(filex,filez,outputFile);
 
+        Path outputxyz = Path.of("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/outputxyz");
+        File outputxyzFile = output.toFile();
+        reader.mergeFilesToAFile(filex, filey, outputxyzFile);
 
     }
 }
