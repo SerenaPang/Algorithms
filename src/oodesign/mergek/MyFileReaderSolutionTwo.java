@@ -1,9 +1,6 @@
 package oodesign.mergek;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,9 +73,8 @@ public class MyFileReaderSolutionTwo {
        return listOfSortedResult;
     }
 
-    public void mergeFiles(File firstInputFile, File secondInputFile, Path outputFile) throws IOException {
-        MyFileWriter writer = new MyFileWriter();
-
+    public void mergeFiles(File firstInputFile, File secondInputFile, File outputFile) throws IOException {
+      //create file reader to read the files
         FileReader firstFR = new FileReader(firstInputFile);
         BufferedReader br = new BufferedReader(firstFR);
 
@@ -89,7 +85,9 @@ public class MyFileReaderSolutionTwo {
 
         String firstLine = br.readLine();
         String secondLine = brSecond.readLine();
-        List<String> listOfSortedResult = new ArrayList<>();
+
+        //create file writer to write the files
+        FileWriter writer = new FileWriter(outputFile);
 
         while (firstLine != null && secondLine != null) {
 
@@ -108,10 +106,10 @@ public class MyFileReaderSolutionTwo {
             //compare the time of the two lines in the file, write the lines to the output file
 
             if (timeFirst <= timeSecond) {
-                writer.writeLine(outputFile, firstLine);
+                writer.write(firstLine + System.lineSeparator());
                 firstLine = br.readLine();
             } else {
-                writer.writeLine(outputFile, secondLine);
+                writer.write(secondLine + System.lineSeparator());
                 secondLine = brSecond.readLine();
             }
         }
@@ -119,17 +117,22 @@ public class MyFileReaderSolutionTwo {
         //if file one finished first, then put everything left on file two to the output file
         //be careful about the sequence of putting the current line first and then iterate to the next line
         while (firstLine != null) {
-            writer.writeLine(outputFile, firstLine);
+            writer.write(firstLine + System.lineSeparator());
             firstLine = br.readLine();
         }
 
 
         //if file two finished first, put everything left on file one to the output file
         while (secondLine != null) {
-            writer.writeLine(outputFile, secondLine);
+            writer.write(secondLine + System.lineSeparator());
             secondLine = brSecond.readLine();
         }
+        //after use the file, close it
+        writer.flush();
+        writer.close();
     }
+
+
 
 
     public void print(List<String> result) {
@@ -145,9 +148,11 @@ public class MyFileReaderSolutionTwo {
         File filey = new File("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/filey");
         File filez = new File("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/filez");
 
-        //write files to the output location
+        //write string content directly to the output location
         Path output = Path.of("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/output");
+        File outputFile = output.toFile();
+        reader.mergeFiles(filex,filey,outputFile);
 
-        reader.mergeFiles(filex,filey,output);
+
     }
 }

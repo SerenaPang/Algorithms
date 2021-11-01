@@ -1,8 +1,6 @@
 package oodesign.mergek;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
@@ -13,10 +11,20 @@ import java.util.List;
 
 public class MyFileWriter {
 
-    public void writeLine(Path path, String content) throws IOException {
-        FileWriter writer = new FileWriter(path.toFile());
-        System.out.println("writing " + content);
-        writer.write(content + System.lineSeparator());
+    public void testWriter(File input, File output) throws IOException {
+        //create file reader to read the files
+        FileReader in = new FileReader(input);
+        BufferedReader br = new BufferedReader(in);
+        String line;
+
+        //create file writer to write the files
+        FileWriter writer = new FileWriter(output);
+
+
+        while ((line = br.readLine()) != null) {
+            writer.write(line + System.lineSeparator());
+        }
+        writer.flush();
         writer.close();
     }
 
@@ -48,10 +56,13 @@ public class MyFileWriter {
         //merge result
         List<String> result = reader.merge(filex, filey);
 
-        //write files to the output location
+        //write list of strings to the output location
       //  File output = new File("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/output");
         Path out = Path.of("/Users/serenapang/Development/Algorithms/src/oodesign/mergek/output");
         MyFileWriter writer = new MyFileWriter();
         writer.writeToFile(out, result);
+        File outputFile = out.toFile();
+        writer.testWriter(filex, outputFile);
+
     }
 }
