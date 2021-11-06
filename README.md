@@ -1,3 +1,3 @@
 # LaiCode
 
-Solutions to the Problems.
+this Repo contains all the topics for algorithms and data structures
