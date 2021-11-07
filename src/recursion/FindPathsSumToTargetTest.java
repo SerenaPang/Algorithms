@@ -54,6 +54,5 @@ class FindPathsSumToTargetTest {
         expected.add(pathThree);
 
         Assert.assertEquals(result, expected);
-
     }
 }

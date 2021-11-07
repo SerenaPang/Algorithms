@@ -14,7 +14,8 @@ public class FindPathsSumToTarget {
             return paths;
         }
         List<Integer> path = new ArrayList<>();
-        findPathsHelper(root, target, path, paths);
+        //findPathsHelper(root, target, path, paths);
+        helper(root,target, 0, path,paths);
         return paths;
     }
 
@@ -45,7 +46,25 @@ public class FindPathsSumToTarget {
      * optimize n times of adding elements in the list, we will pass the sum of all the nodes we visited previously to the next level and add it to see if it equals to target
      * when we return to the riginal state, we will have the previous sum in the previous stage, and we have to remove the last elemnt from the list
      * */
+    public boolean helper (TreeNode root, int target, int currentSum, List<Integer> path, List<List<Integer>> paths) {
+        path.add(root.key);
+        currentSum += root.key;
+        if (currentSum == target) {
+            paths.add(new ArrayList<>(path));
+            return true;
+        }
+        if (root.left != null && helper(root.left,target,currentSum,path,paths)) {
+            return true;
+        }
 
+        if (root.right != null && helper(root.right, target, currentSum, path, paths)) {
+            return true;
+        }
+
+        currentSum = currentSum - path.get(path.size() - 1);
+        path.remove(path.size() - 1);
+        return false;
+    }
 
 
     public static void printLists(List<List<Integer>> result) {
