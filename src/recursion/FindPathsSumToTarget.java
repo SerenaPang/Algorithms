@@ -41,6 +41,12 @@ public class FindPathsSumToTarget {
         return false;
     }
 
+    /**
+     * optimize n times of adding elements in the list, we will pass the sum of all the nodes we visited previously to the next level and add it to see if it equals to target
+     * when we return to the riginal state, we will have the previous sum in the previous stage, and we have to remove the last elemnt from the list
+     * */
+
+
 
     public static void printLists(List<List<Integer>> result) {
         System.out.println("Printing Lists: ");
