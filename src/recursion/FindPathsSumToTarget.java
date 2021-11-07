@@ -9,12 +9,10 @@ public class FindPathsSumToTarget {
      * This function is going to find paths that are sum to target(if there are paths)
      * */
     public List<List<Integer>> findPathsSumToTarget(TreeNode root, int target){
+        System.out.println("JTesting");
         List<List<Integer>> paths= new ArrayList<>();
-        if (root == null) {
-            return paths;
-        }
         List<Integer> path = new ArrayList<>();
-        //findPathsHelper(root, target, path, paths);
+
         helper(root,target, 0, path,paths);
         return paths;
     }
@@ -46,24 +44,24 @@ public class FindPathsSumToTarget {
      * optimize n times of adding elements in the list, we will pass the sum of all the nodes we visited previously to the next level and add it to see if it equals to target
      * when we return to the riginal state, we will have the previous sum in the previous stage, and we have to remove the last elemnt from the list
      * */
-    public boolean helper (TreeNode root, int target, int currentSum, List<Integer> path, List<List<Integer>> paths) {
+    public void helper (TreeNode root, int target, int currentSum, List<Integer> path, List<List<Integer>> paths) {
+        if (root == null) {
+            return;
+        }
+
         path.add(root.key);
         currentSum += root.key;
         if (currentSum == target) {
             paths.add(new ArrayList<>(path));
-            return true;
-        }
-        if (root.left != null && helper(root.left,target,currentSum,path,paths)) {
-            return true;
-        }
-
-        if (root.right != null && helper(root.right, target, currentSum, path, paths)) {
-            return true;
+            //here we have to remove the added element since we don't want to pass it to the next iteration
+            path.remove(path.size() - 1);
+            return;
         }
 
-        currentSum = currentSum - path.get(path.size() - 1);
+        helper(root.left, target, currentSum, path, paths);
+        helper(root.right, target, currentSum, path, paths);
+
         path.remove(path.size() - 1);
-        return false;
     }
 
 

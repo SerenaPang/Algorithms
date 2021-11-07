@@ -27,7 +27,7 @@ public class BinaryTreePathSumToTarget {
      * helper function to find a path sum to the target
      *
      * */
-    public void helper(TreeNode root, int target, List<Integer> path) {
+    public boolean helper(TreeNode root, int target, List<Integer> path) {
         print(path);
         //put the first node in the list
         path.add(root.key);
@@ -37,18 +37,21 @@ public class BinaryTreePathSumToTarget {
            sum = sum + path.get(i);
            if (sum == target) {
                print(path);
-               return;
+               return true;
            }
        }
 
        //recursion call that pass the left node as root add to list, if true means nodes in the list sum to target
-        helper(root.left, target, path);
-        helper(root.right, target,path);
-
+       if (root.left != null && helper(root.left, target, path)) {
+          return true;
+       }
+        if (root.right != null && helper(root.right, target,path)) {
+           return true;
+       }
         //we have to return to the original state and then try another case
         path.remove(path.size() - 1);
         //if we are here, it means we have not found the path yet
-        return ;
+        return false;
     }
 
     public static void print(List<Integer> result) {
