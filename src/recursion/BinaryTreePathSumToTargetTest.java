@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 class BinaryTreePathSumToTargetTest {
-
     @Test
     void test_OnePath() {
         TreeNode eight = new TreeNode(8);
@@ -40,12 +39,5 @@ class BinaryTreePathSumToTargetTest {
         expected.add(4);
 
         Assert.assertEquals(result, expected);
-    }
-
-
-    @Test
-    void test_SeveralPaths() {
-
-
     }
 }
