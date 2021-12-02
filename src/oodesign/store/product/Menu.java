@@ -141,7 +141,6 @@ public class Menu {
         MyFileReader fr = new MyFileReader();
         File file = new File("/Users/serenapang/Development/Algorithms/src/oodesign/store/product/products.csv");
         List<Product> products = fr.extractInfo(file);
-        //fr.print(products);
 
         Menu menu = new Menu(products);
         menu.startProgram();
