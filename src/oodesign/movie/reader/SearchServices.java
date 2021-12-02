@@ -12,7 +12,7 @@ import java.util.List;
 public class SearchServices {
     HashMap<Integer, Movie> mapOfMovies = new HashMap<Integer, Movie>();
 
-    SearchServices(HashMap<Integer, Movie> mapForMovies) {
+    public SearchServices(HashMap<Integer, Movie> mapForMovies) {
         this.mapOfMovies = mapForMovies;
     }
 

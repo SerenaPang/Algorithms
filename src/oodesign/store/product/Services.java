@@ -13,18 +13,16 @@ import java.util.*;
  * (from 1/2020 to 8/2021)
  * */
 public class Services {
+    List<Product> products;
+    //pass the list of products to map builder
+    MapBuilder mapBuilder;
+    //use this map for searching services
+    Map<Integer, Product> idAndProduct;
 
-    public static Map<Integer, Product> idAndProduct;
-
-    /**
-     * create a map with id as key and all information of the product as value
-     * */
-    public Map<Integer, Product> buildMapIDandProduct(List<Product> products){
-        idAndProduct = new HashMap<>();
-        for (Product aProduct : products) {
-            idAndProduct.put(aProduct.getId(), aProduct);
-        }
-        return idAndProduct;
+    public Services (List<Product> listOfAllProducts) {
+        this.products = listOfAllProducts;
+        mapBuilder = new MapBuilder(products);
+        idAndProduct = mapBuilder.buildMapIDandProduct();
     }
 
     /**
@@ -40,33 +38,35 @@ public class Services {
     /**
      * search by name
      * */
-    public Product searchByName(String name){
+    public List<Product> searchByName(String name){
+        List<Product> listProducts = new ArrayList<>();
         Iterator<Map.Entry<Integer, Product>> iterator = idAndProduct.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<Integer, Product> entry = iterator.next();
             int id = entry.getKey();
             String nameInfo = entry.getValue().getName();
             if (nameInfo.equals(name)) {
-                return idAndProduct.get(id);
+                listProducts.add(idAndProduct.get(id));
             }
         }
-        return null;
+        return listProducts;
     }
 
     /**
      * search by color
      * */
-    public Product searchByColor(String color){
+    public List<Product> searchByColor(String color){
+        List<Product> listProducts = new ArrayList<>();
         Iterator<Map.Entry<Integer, Product>> iterator = idAndProduct.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<Integer, Product> entry = iterator.next();
             int id = entry.getKey();
             String colorInfo = entry.getValue().getColor();
             if (colorInfo.equals(color)) {
-                return idAndProduct.get(id);
+                listProducts.add(idAndProduct.get(id));
             }
         }
-        return null;
+        return listProducts;
     }
     /**
      * search by date range
@@ -87,31 +87,52 @@ public class Services {
         }
         return listProducts;
     }
+    /**
+     * print the search result for search for single result
+     *  - id
+     * */
+    public void printResult(Product product) {
+        if (product == null) {
+            System.out.println("Product NOT FOUND");
+            return;
+        }
+        System.out.println(product);
+    }
+
+    /**
+     * print the search result for search for multiple result
+     *  - name
+     *  - color
+     *  - date range
+     * */
+    public void printListOfResults(List<Product> products) {
+        if (products == null || products.size() == 0) {
+            System.out.println("Product NOT FOUND");
+            return;
+        }
+        for (Product aProduct : products) {
+            System.out.println(aProduct);
+        }
+    }
 
     public void printMap(Map<Integer, Product> map) {
         System.out.println(map.entrySet());
     }
 
-    public void print(List<Product> products) {
-        for (Product aProduct : products) {
-            System.out.println(aProduct);
-        }
-    }
     public static void main(String[] args) throws IOException {
         MyFileReader fr = new MyFileReader();
         File file = new File("/Users/serenapang/Development/Algorithms/src/oodesign/store/product/products.csv");
         List<Product> products = fr.extractInfo(file);
         //fr.print(products);
 
-        Services services = new Services();
-        Map<Integer, Product> idWithProduct = services.buildMapIDandProduct(products);
-        services.printMap(idWithProduct);
+        Services services = new Services(products);
+       // services.printMap(idWithProduct);
 
         Product product = services.searchById(1);
-        System.out.println("Searching " + product.getId() + " " + product.getName());
+        services.printResult(product);
 
-        System.out.println("Search products from Jan 2020 to Aug 2021: ");
-        List<Product> result = services.searchByDateRange(1,2020, 8,2021);
-        services.print(result);
+    //    System.out.println("Search products from Jan 2020 to Aug 2021: ");
+     //   List<Product> result = services.searchByDateRange(1,2020, 8,2021);
+    //    services.printListOfResults(result);
     }
 }
