@@ -14,6 +14,9 @@ public class Product {
     String price;
     String color;
 
+    int month;
+    int year;
+
     public Product(int id) {
         this.id = id;
     }
@@ -66,17 +69,33 @@ public class Product {
         this.date = date;
     }
 
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", month=" + month +
-                ", year=" + year +
                 ", date='" + date + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price='" + price + '\'' +
                 ", color='" + color + '\'' +
+                ", month=" + month +
+                ", year=" + year +
                 '}';
     }
 }
