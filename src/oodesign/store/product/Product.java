@@ -8,8 +8,6 @@ package oodesign.store.product;
  * */
 public class Product {
     int id;
-    int month;
-    int year;
     String date;
     String name;
     String description;
@@ -26,22 +24,6 @@ public class Product {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getMonth() {
-        return month;
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
     }
 
     public String getDescription() {
@@ -82,5 +64,19 @@ public class Product {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", month=" + month +
+                ", year=" + year +
+                ", date='" + date + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price='" + price + '\'' +
+                ", color='" + color + '\'' +
+                '}';
     }
 }

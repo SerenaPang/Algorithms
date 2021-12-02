@@ -25,10 +25,12 @@ public class MyFileReader {
             int id = Integer.parseInt(idStr);
             String date = productArray[1];
             String name = productArray[2];
+            String color = productArray[5];
 
             Product aProduct = new Product(id);
             aProduct.setDate(date);
             aProduct.setName(name);
+            aProduct.setColor(color);
             listOfProducts.add(aProduct);
         }
         return listOfProducts;
@@ -47,6 +49,4 @@ public class MyFileReader {
         List<Product> products = fr.extractInfo(file);
         fr.print(products);
     }
-
-
 }
