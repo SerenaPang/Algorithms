@@ -73,6 +73,10 @@ public class Services {
      * */
     public List<Product> searchByDateRange(int startingMonth, int startingYear, int endingMonth, int endingYear) {
         List<Product> listProducts = new ArrayList<>();
+        if (endingYear < startingYear) {
+            System.out.println("Ending year should be GREATER or EQUALS to the starting year ");
+            return listProducts;
+        }
         Iterator<Map.Entry<Integer, Product>> iterator = idAndProduct.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<Integer, Product> entry = iterator.next();
@@ -81,9 +85,38 @@ public class Services {
             int year = entry.getValue().getYear();
 
             //if the item production date is within the range of date, we return it
-            if (month >= startingMonth && month <= endingMonth && year >= startingYear && year <= endingYear) {
-                listProducts.add(idAndProduct.get(id));
+
+            //be mindful about the year difference and the months it should be added
+            /**
+             * if starting year is less than ending year
+             * such as from 1/2020 - 4/2022
+             *
+             * we need to print all year of 2020 and 2021
+             * which means 1/2020 - 12/2020 and 1/2021 - 12/2021
+             * and then 1/2022 to 4/2022
+             * */
+            int yearDifference = endingYear - startingYear;
+            //we have to add all the products from the starting month of the starting year
+            //also the whole year product of the other years
+            /**
+             * we are going to decrement the year difference until it reaches 0
+             * when difference is 0, we only need to add the products from that ending year
+             * first we add all the products produced from the starting mon to December for the starting year
+             * if there are more years need to be added()
+             * */
+            if (yearDifference > 0) {
+                    //if it's the same as starting year, add >= starting month to December
+                    //if year is greater than starting year
+
+            } //year difference is 0, which means its the same year, but might have difference in months
+            else { //as long as the product is produced in that year, print all products within the months frame
+                if (month >= startingMonth && month <= endingMonth && year == startingYear) {
+                    listProducts.add(idAndProduct.get(id));
+                }
             }
+//            if (month >= startingMonth && month <= endingMonth && year >= startingYear && year <= endingYear) {
+//                listProducts.add(idAndProduct.get(id));
+//            }
         }
         return listProducts;
     }
