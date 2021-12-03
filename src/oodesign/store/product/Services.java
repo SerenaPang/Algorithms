@@ -87,7 +87,7 @@ public class Services {
             int id = entry.getKey();
             int month = entry.getValue().getMonth();
             int year = entry.getValue().getYear();
-            System.out.println("month: " + month + " starting mon: " + startingMonth + " ending mon: " + endingMonth + " year: " + year + " starting: " + startingYear  + " ending year: " + endingYear);
+           // System.out.println("month: " + month + " starting mon: " + startingMonth + " ending mon: " + endingMonth + " year: " + year + " starting: " + startingYear  + " ending year: " + endingYear);
             /**
              * case 1: year, starting year and ending year are equals; we only include the months in range
              * case 2.1: starting year is the same as year, but ending year is not the same as year;
@@ -95,18 +95,19 @@ public class Services {
              * case 2.2: starting and ending year are not the same; and both are not the same as year
              *  we include all the years in range with all months
              * */
-            if (startingYear == endingYear && startingYear == year && endingYear == year) {
-                if (year == startingYear && month >= startingMonth && month <= endingMonth) {
+            if (startingYear == endingYear) {
+                if (year == endingYear && month >= startingMonth && month <= endingMonth) {
                     listProducts.add(idAndProduct.get(id));
                 }
-            } else if (endingYear > startingYear) {
+            } else {
                     //case 2.1
                     if (startingYear == year && month >= startingMonth && month <= 12 || endingYear == year && month <= endingMonth) {
                         listProducts.add(idAndProduct.get(id));
-                    } else {
+                    } else  if (year > startingYear && year < endingYear){
                         //case 2.2
                         //in between the starting and ending year
                         if (year > startingYear && year < endingYear && month >= 1 && month <= 12) {
+                            System.out.println("here add " + id);
                             listProducts.add(idAndProduct.get(id));
                         }
                     }
@@ -158,9 +159,17 @@ public class Services {
 //        Product product = services.searchById(1);
 //        services.printResult(product);
 
-        //testing date range
-        System.out.println("Search products from Jan 2020 to Aug 2021: ");
-        List<Product> result = services.searchByDateRange(1,2020, 8,2022);
+        //testing date range: starting year == ending year
+        //3/2020 - 8/2020
+        //List<Product> result = services.searchByDateRange(2,2020, 6,2020);
+
+        //testing date range: starting year < ending year
+        //2/2020 - 1/2022
+        List<Product> result = services.searchByDateRange(2,2020, 1,2022);
+
+        //testing date range: starting year < ending year
+        //3/2020 - 3/2021
+        //List<Product> result = services.searchByDateRange(3,2020, 4,2021);
         services.printListOfResults(result);
     }
 }

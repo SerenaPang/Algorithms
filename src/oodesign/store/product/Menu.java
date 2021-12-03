@@ -80,28 +80,34 @@ public class Menu {
 
             case 4:
                 System.out.println("Please enter product year range(starting month and year, ending month and year)");
+                System.out.println();
 
-                System.out.println("Enter Starting Month(Press ENTER or RETURN to continue): " );
+                System.out.println("Enter Starting Month(Press ENTER to continue): " );
                 String startMonStr = inStr.nextLine();
                 int startMon = Integer.parseInt(startMonStr);
-                System.out.println("You Entered: " + startMon + " Press ENTER or RETURN to continue");
+                System.out.println("You Entered: " + startMon + " Press ENTER to continue");
+                System.out.println();
 
                 System.out.println("Enter Starting Year: ");
                 String startYearStr = inStr.nextLine();
                 int startYear = Integer.parseInt(startMonStr);
-                System.out.println("You Entered: " + startYearStr+ " Press ENTER or RETURN to continue");
+                System.out.println("You Entered: " + startYearStr+ " Press ENTER to continue");
+                System.out.println();
 
                 System.out.println("Enter Ending Month: ");
                 String endMonStr = inStr.nextLine();
                 int endMon = Integer.parseInt(endMonStr);
-                System.out.println("You Entered: " + endMonStr+ " Press ENTER or RETURN to continue");
+                System.out.println("You Entered: " + endMonStr+ " Press ENTER to continue");
+                System.out.println();
 
                 System.out.println("Enter Ending Year: ");
                 String endYearStr = inStr.nextLine();
                 int endYear = Integer.parseInt(endYearStr);
                 System.out.println("You Entered: " + endYearStr+ " Press ENTER or RETURN to continue");
+                System.out.println();
 
                 System.out.println("Searching products produced between " + startMonStr +"/" + startYearStr + " and " + endMonStr + "/" + endYearStr);
+                System.out.println();
                 List<Product> productsDateRange = services.searchByDateRange(startMon,startYear,endMon,endYear);
                 services.printListOfResults(productsDateRange);
                 break;
