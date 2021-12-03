@@ -16,6 +16,7 @@ public class Product {
 
     int month;
     int year;
+    Date dateInfo = new Date(month, year);
 
     public Product(int id) {
         this.id = id;
@@ -97,5 +98,13 @@ public class Product {
                 ", month=" + month +
                 ", year=" + year +
                 '}';
+    }
+
+    public Date getDateInfo() {
+        return dateInfo;
+    }
+
+    public void setDateInfo(int month, int year) {
+        this.dateInfo = dateInfo;
     }
 }

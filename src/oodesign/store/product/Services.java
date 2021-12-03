@@ -70,6 +70,10 @@ public class Services {
     }
     /**
      * search by date range
+     *  if the item production date is within the range of date, we return it
+     *   be mindful about the year difference and the months it should be added
+     *   we have to add all the products from the starting month of the starting year
+     *   also the whole year product of the other years
      * */
     public List<Product> searchByDateRange(int startingMonth, int startingYear, int endingMonth, int endingYear) {
         List<Product> listProducts = new ArrayList<>();
@@ -83,40 +87,30 @@ public class Services {
             int id = entry.getKey();
             int month = entry.getValue().getMonth();
             int year = entry.getValue().getYear();
-
-            //if the item production date is within the range of date, we return it
-
-            //be mindful about the year difference and the months it should be added
+            System.out.println("month: " + month + " starting mon: " + startingMonth + " ending mon: " + endingMonth + " year: " + year + " starting: " + startingYear  + " ending year: " + endingYear);
             /**
-             * if starting year is less than ending year
-             * such as from 1/2020 - 4/2022
-             *
-             * we need to print all year of 2020 and 2021
-             * which means 1/2020 - 12/2020 and 1/2021 - 12/2021
-             * and then 1/2022 to 4/2022
+             * case 1: year, starting year and ending year are equals; we only include the months in range
+             * case 2.1: starting year is the same as year, but ending year is not the same as year;
+             *          we include starting year month in range, and ending year month in range
+             * case 2.2: starting and ending year are not the same; and both are not the same as year
+             *  we include all the years in range with all months
              * */
-            int yearDifference = endingYear - startingYear;
-            //we have to add all the products from the starting month of the starting year
-            //also the whole year product of the other years
-            /**
-             * we are going to decrement the year difference until it reaches 0
-             * when difference is 0, we only need to add the products from that ending year
-             * first we add all the products produced from the starting mon to December for the starting year
-             * if there are more years need to be added()
-             * */
-            if (yearDifference > 0) {
-                    //if it's the same as starting year, add >= starting month to December
-                    //if year is greater than starting year
-
-            } //year difference is 0, which means its the same year, but might have difference in months
-            else { //as long as the product is produced in that year, print all products within the months frame
-                if (month >= startingMonth && month <= endingMonth && year == startingYear) {
+            if (startingYear == endingYear && startingYear == year && endingYear == year) {
+                if (year == startingYear && month >= startingMonth && month <= endingMonth) {
                     listProducts.add(idAndProduct.get(id));
                 }
+            } else if (endingYear > startingYear) {
+                    //case 2.1
+                    if (startingYear == year && month >= startingMonth && month <= 12 || endingYear == year && month <= endingMonth) {
+                        listProducts.add(idAndProduct.get(id));
+                    } else {
+                        //case 2.2
+                        //in between the starting and ending year
+                        if (year > startingYear && year < endingYear && month >= 1 && month <= 12) {
+                            listProducts.add(idAndProduct.get(id));
+                        }
+                    }
             }
-//            if (month >= startingMonth && month <= endingMonth && year >= startingYear && year <= endingYear) {
-//                listProducts.add(idAndProduct.get(id));
-//            }
         }
         return listProducts;
     }
@@ -161,11 +155,12 @@ public class Services {
         Services services = new Services(products);
        // services.printMap(idWithProduct);
 
-        Product product = services.searchById(1);
-        services.printResult(product);
+//        Product product = services.searchById(1);
+//        services.printResult(product);
 
-    //    System.out.println("Search products from Jan 2020 to Aug 2021: ");
-     //   List<Product> result = services.searchByDateRange(1,2020, 8,2021);
-    //    services.printListOfResults(result);
+        //testing date range
+        System.out.println("Search products from Jan 2020 to Aug 2021: ");
+        List<Product> result = services.searchByDateRange(1,2020, 8,2022);
+        services.printListOfResults(result);
     }
 }
