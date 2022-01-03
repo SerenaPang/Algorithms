@@ -24,7 +24,7 @@ public class CheckIfLinkedListIsPalindrome {
      * h walk to the end, when poll from the stack, it will return the elements back wards
      * when pop from the stack, compare the current head with the original node
      * when pop from the stack, move the original node forward
-     * return to upper level if the previous is euqal, if previous return true and the current is true, return true, else false
+     * return to upper level if the previous is equal, if previous return true and the current is true, return true, else false
      *
      * */
     //
